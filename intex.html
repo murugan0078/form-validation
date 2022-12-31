@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Create Account</h2>
+        </div>
+        <form class="form" id="form">
+            <div class="form-controle">
+                <label >username</label>
+                <input type="text" placeholder="enter your name" id="username">
+                <i class="fa-regular fa-circle-check"></i>
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <small>error massage</small>
+            </div>
+                <div class="form-controle">
+                    <label >email</label>
+                    <input type="text" placeholder="enter your email id" id="email">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>error massage</small>
+                </div>
+                <div class="form-controle">
+                    <label >password</label>
+                    <input type="password" placeholder="enter your password" id="password">
+                    <i class=" fa-regular fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>error massage</small>
+                </div>
+                <div class="form-controle">
+                    <label >confirm password</label>
+                    <input type="password" placeholder="confirm password" id="cpassword">
+                    <i class="fa-regular fa-circle-check"></i>
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <small>error massage</small>
+                </div>
+                <button class="submit">submit</button>
+                
+
+                
+   
+
+
+            
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById("form");
+        const username = document.getElementById("username");
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const cpassword = document.getElementById("cpassword");
+        form.addEventListener('submit',e=>{
+            e.preventDefault();
+            checkInput();
+        });
+        function checkInput(){
+            const usernameValue = username.Value.trim();
+            const emailValue = email.Value.trim();
+            const passwordValue = password.Value.trim();
+            const cpasswordValue = cpassword.Value.trim();
+            if(usernameValue===""){
+                setError(username,'user name cannot be blank');
+            }
+            else{
+                setSucess(username);
+            }
+            if(emailValue===''){
+                setError(email,'email cannot be blank');
+            }
+            else if(!isEmail(emailValue)){
+                setError(email,'not a valid email');
+            }
+            else{
+                setSucess(email);
+            }
+            if(passwordlValue===''){
+                setError(password,'password cannot be blank');
+            }
+            else{
+                setSucess(password);
+            }
+            if(cpassword===''){
+                setError(cpassword,'conform password cannot be blank');
+            }
+            else if(passwordValue !== cpassword){
+                setError(password,'not a valid password');
+            }
+            else{
+                setSucess(password);
+                
+            }
+            function setError(input,massage){
+                const formControle = input.parentElement();
+                const small = formControle.queryselector('small');
+                formControle.classname ='form-controle error';
+                small.innertext( )= message;
+            }
+            
+
+            function isEmail(email){
+                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+                 .test(email);
+                
+            }
+            
+        }
+
+    </script>
+    
+</body>
+</html>
